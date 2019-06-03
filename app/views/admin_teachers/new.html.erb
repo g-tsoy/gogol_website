@@ -1,0 +1,48 @@
+<% provide(:title, "Admin | Teachers | New") %>
+<% provide(:active, "teachers") %>
+
+<% content_for :breadcrumb do %>
+	<%= render 'shared/breadcrumb', path: [path("Домой", "/"), path("Личный кабинет", "/admin"), path("Учителя", "/admin/teachers"), path("Создать", "/admin/teachers/new")] %>
+<% end %>
+
+<div id='n'>
+	<h4 id='cr'>Добавить учителя:</h4>
+
+	<% if @teacher.errors.any? %>
+	<div class="alert alert-danger mt-4">
+		<ul>
+		<% @teacher.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		<% end %>
+		</ul>
+	</div>
+	<% end %>
+
+	<%= form_for @teacher, url: admin_teachers_create_path do |f| %>
+		<div class="form-group">
+			<%= f.label :ФИО %>
+			<br>
+			<%= f.text_field :name, class: "w-75" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :Предмет %>
+			<br>
+			<%= f.text_field :subject, class: "w-75" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :Комментарий %>
+			<br>
+			<%= f.text_area :description, class: "w-75" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :Фото %>
+			<br>
+			<%= f.file_field :photo %>
+		</div>
+
+		<%= f.submit "Создать", class: "btn btn-primary" %>
+	<% end %>
+</div>

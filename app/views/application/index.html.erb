@@ -1,0 +1,46 @@
+<% provide(:title, "Home") %>
+
+<nav>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active"><a href="/">Главная</a></li>
+  </ol>
+</nav>
+
+<div class="row frontpage bl">
+
+	<!-- Content -->
+	<div class="col-md-12">
+		<h1 id='title'>Новости</h1>
+	</div>
+	<div class='col-md-9'>
+		<% @news.each do |post| %>
+			<div class="media mb-3 border rounded">
+				<% if post.cover != "" %>
+					<img class="img_index mr-3" src="<%= post.cover %>">
+				<% end %>
+				<div class="media-body">
+					<a href="/news/<%= post.id %>"><h5 class="mt-0"><%= post.name %></h5></a>
+					<p><%= post.created_at.strftime('%F')%></p>
+					<p><%= post.content[0,100]%>...</p>
+					<a href="/news/<%= post.id %>">Читать полностью</a>				
+				</div>
+
+			</div>
+		<% end %>
+	</div>
+
+	<!-- Sidebar navigation -->
+	<div class="sideb col-md-3">
+		<h5 class="mb-3 ml-3">Карта сайта</h5>
+		<ul class="list-group list-group-flush">
+			<%= link_to "Главная", '/', class: "list-group-item active" %>
+			<%= link_to "О лицее", about_path, class: "list-group-item" %>
+			<%= link_to "Учителя", teachers_path, class: "list-group-item" %>
+			<%= link_to "Расписание", schedule_path, class: "list-group-item" %>
+			<%= link_to "Отзывы", reviews_path, class: "list-group-item" %>
+			<%= link_to "Контакты", contacts_path, class: "list-group-item" %>
+
+		</ul>
+	</div>
+
+</div>

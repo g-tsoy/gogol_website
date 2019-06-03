@@ -1,0 +1,23 @@
+<% provide(:title, "View post") %>
+
+<nav>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Главная</a></li>
+	<li class="breadcrumb-item active"><a href="#">Новость</a></li>
+  </ol>
+</nav>
+
+<div class="row frontpage bl">
+	<div class='col-md-6'>
+		<h3 id='title_news'><%= @post.name %></h3>	
+		<p><%= @post.created_at.strftime('%F')%></p>
+		<h5 class="text-muted">Автор: <a href="/user/<%= @post.user.id %>"><%= @post.user.name %></a></h5>
+		<p id='content_news'><%= @post.content %></p>
+	</div>
+	<div class='col-md-6'>	
+		<% if @post.cover != "" %>
+			<img class='img_news' src="<%= @post.cover %>">
+		<% end %>
+	</div>
+
+</div>

@@ -1,0 +1,33 @@
+<% provide(:title, "Admin | Schedule") %>
+<% provide(:active, "schedule") %>
+
+<% content_for :breadcrumb do %>
+	<%= render 'shared/breadcrumb', path: [path("Главная", "/"), path("Личный кабинет", "/admin"), path("Расписание", "/admin/schedule")] %>
+<% end %>
+
+
+<div id='n'>
+	<h4 id='cr'>Расписание:</h4>
+	<table class="mr-3">
+		<thead>
+			<th>Класс</th>
+			<th>№ дня</th>
+			<th>№ урока</th>
+			<th></th>
+			<th></th>
+		</thead>
+		<tbody>
+		<% @schedules.each do |schedule| %>
+			<tr>
+				<td> <%= schedule.group %> </td>
+				<td> <%= schedule.day %> </td>
+				<td> <%= schedule.lesson %> </td>
+				<td class="pr-2"> <%= link_to "Редактировать", "/admin/schedule/#{schedule.id}/edit" %></td>
+				<td> <%= link_to "Удалить", "/admin/schedule/#{schedule.id}/delete", method: "delete" %></td>
+			</tr>
+		<% end %>
+		</tbody>
+	</table>
+
+	<%= link_to "Создать", admin_schedule_new_path, class: "btn btn-primary btn-sm mt-4" %>
+</div>

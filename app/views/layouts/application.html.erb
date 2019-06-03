@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<%= csrf_meta_tags %>
+	<%= csp_meta_tag %>
+
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+	<title>Liceum Gogol | <%= yield(:title) %></title>
+</head>
+<body>
+	<div class="container pt-2 px-2 d-flex flex-column vh-100">
+
+		<!-- Navbar -->
+		<nav class="navbar navbar-dark bg-dark navbar-expand-sm">
+          <%= render 'layouts/nav' %>
+
+				<% if !logged_in? %>
+					<form class="form-inline">
+						<%= link_to "Регистрация", signup_path, class: "btn btn-sm btn-outline-light mr-1" %>
+						<%= link_to "Вход", login_path, class: "btn btn-sm btn-dark text-light" %>
+					</form>
+				<% else %>
+					<div class="btn-group">
+						<button type="button" class="btn btn-dark text-muted dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<%= current_user.name %>
+						</button>
+						<div class="dropdown-menu">
+							<%= link_to "Личный кабинет", admin_path, class: "dropdown-item" %>
+							<div class="dropdown-divider"></div>
+							<%= link_to "Выход", logout_path, method: :delete, class: "dropdown-item" %>
+						</div>
+					</div>
+				<% end %>		  
+
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-list-2" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		  </button>		    
+		</nav>
+
+		<!-- Cover -->
+		<div class="rounded-bottom mb-3 flex-shrink-0"
+			style="height: 23%; background: url('img/news_1.jpg') center/100%"
+		></div>
+
+		<!-- Main -->
+		<div class="mb-5">
+			<% flash.each do |message_type, message| %>
+				<div class="alert alert-<%= message_type %>"><%= message %></div>
+			<% end %>
+
+			<%= yield %>
+		</div>
+
+		<!-- Footer -->
+		<div class="bg-dark mt-auto p-3 pb-4 text-light rounded-top">
+			<div class="container">&copy; Liceum Teoretic N.Gogol 2019 </div>
+		</div>
+	</div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

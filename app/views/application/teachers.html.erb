@@ -1,0 +1,23 @@
+<% provide(:title, "Teachers") %>
+
+<nav>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Главная</a></li>
+	<li class="breadcrumb-item active"><a href="#">Учителя</a></li>
+  </ol>
+</nav>
+
+<h1 id="title">Учителя</h1>
+
+<div class="d-flex flex-wrap justify-content-between">
+
+	<% @teachers.each do |teacher| %>
+		<div class="card">
+			<img src="<%= teacher.photo %>" class="card-img-top" alt="teacher" />
+			<div class="card-body">
+				<h5 class="card-title"><%= teacher.name %></h5>
+				<p class="card-text"><%= teacher.subject %></p>
+			</div>
+		</div>
+	<% end %>
+</div>

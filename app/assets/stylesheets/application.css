@@ -1,0 +1,186 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+/* teachers*/
+body{
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+	color:#333;
+}
+.card {
+	width: 16em;
+	margin-bottom: 1.5rem;
+}
+
+.card img {
+	height: 18em;
+	object-fit: cover;
+	object-position: top;
+}
+
+/*schedule*/
+select {
+	color: #4e4e4e;
+	padding: 5px 10px;
+	min-width: 18rem;
+}
+
+#cl{
+	max-width: 10rem
+}
+
+table { 
+  width: 90%; 
+}
+tr:nth-of-type(odd) { 
+  background: #eee; 
+}
+th { 
+  background: #333; 
+  color: white; 
+  font-weight: bold; 
+}
+td, th { 
+  padding: 6px; 
+  border: 1px solid #ccc; 
+  text-align: left; 
+}
+#title{
+	margin-bottom: 50px;
+	margin-top: 15px
+}
+#admin_title{
+	margin-bottom: 50px;
+	margin-top: 20px;
+	text-align: center;	
+}
+#cr{
+	margin-bottom: 20px;
+	margin-top: 20px;	
+}
+.del_self{
+  margin-right: 10px;
+  margin-top: 20px
+}
+.login{
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+	width: 300px
+}
+#user_name, #user_email, #user_password,  #user_password_confirmation, #user_master_password{
+	width: 250px;
+}
+
+#title_news{
+	margin-bottom: 15px;
+	margin-top: 15px
+}
+#content_news{
+	margin-top: 30px;
+}
+.bl{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.review{
+	font-size: 20px;
+	font-style: italic;
+	font-family: 'Cambria', Georgia, serif
+}
+.author{
+	margin-top: 20px;
+	margin-bottom: 20px
+}
+.img {
+	object-fit: cover;
+	object-position: top;
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+	width: 150px;
+	height: 150px;
+}
+.img_news{
+	width: 100%;
+}
+.img6{
+	max-width: 100%;
+}
+.img_index{
+	width:150px
+}
+hr.style-one {
+	border: 0px;
+	height: 1px;
+	background: #333;
+	background-image: -webkit-linear-gradient(left, #ccc, #333, #ccc);
+	background-image: -moz-linear-gradient(left, #ccc, #333, #ccc);
+	background-image: -ms-linear-gradient(left, #ccc, #333, #ccc);
+	background-image: -o-linear-gradient(left, #ccc, #333, #ccc);
+}
+.sideb{
+
+	height: max-content
+}
+
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tr { border: 1px solid #ccc; }
+	
+	td { 
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+	}
+
+	#n{
+		margin-left: 30px;
+		width: 100%;
+	}
+	.del_self{
+
+	    display: block;
+	    margin-left: 50px;
+   	    margin-right: 50px;
+	}
+	.review{
+		margin-top: 30px;
+	}
+	.img{
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	.img6{
+		margin-top: 20px;
+
+	}
+	.img_index{
+		width:150px
+	}

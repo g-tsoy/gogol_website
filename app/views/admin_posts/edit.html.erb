@@ -1,0 +1,42 @@
+<% provide(:title, "Admin | Posts | Edit") %>
+<% provide(:active, "posts") %>
+
+<% content_for :breadcrumb do %>
+	<%= render 'shared/breadcrumb', path: [path("Домой", "/"), path("Личный кабинет", "/admin"), path("Новости", "/admin/posts"), path("Редактор", "/admin/posts")] %>
+<% end %>
+
+<div id='n'>
+	<h4 id='cr'>Редактировать новость:</h4>
+
+	<% if @post.errors.any? %>
+	<div class="alert alert-danger mt-4">
+		<ul>
+		<% @post.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		<% end %>
+		</ul>
+	</div>
+	<% end %>
+
+	<%= form_for @post, url: "/admin/posts/#{@post.id}/save" do |f| %>
+		<div class="form-group">
+			<%= f.label :Заголовок %>
+			<br>
+			<%= f.text_field :name, class: "w-50" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :Содержание %>
+			<br>
+			<%= f.text_area :content, class: "w-50" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :Обложка %>
+			<br>
+			<%= f.file_field :cover %>
+		</div>
+
+		<%= f.submit "Обновить", class: "btn btn-primary" %>
+	<% end %>
+</div>

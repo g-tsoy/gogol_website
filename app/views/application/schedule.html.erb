@@ -1,0 +1,60 @@
+<% provide(:title, "Schedule") %>
+
+<nav>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Главная</a></li>
+	<li class="breadcrumb-item active"><a href="#">Расписание</a></li>
+  </ol>
+</nav>
+	<div class="row frontpage bl">
+		<!-- Content -->
+		<div class="col-md-12">
+			<h1 id='title'>Расписание</h1>
+
+				<!-- Form -->
+		<div >
+				<%= form_tag schedule_path, class: "justify-content-center mb-3" do %>
+					<%= select_tag :group, options_for_select(["Выбрать класс", *@groups], selected: 1, disabled: "Выбрать"), class: "mb-3" %>
+					<%= submit_tag "Выбрать", class: "btn btn-dark" %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class='col-md-12'	
+			<!-- Result -->
+			<table class="table">
+				<thead class="thead-dark">
+					<tr>
+						<th id ='num' scope="col">№</th>
+						<th id ='d' scope="col">Пн</th>
+						<th id ='d' scope="col">Вт</th>
+						<th id ='d' scope="col">Ср</th>
+						<th id ='d' scope="col">Чт</th>
+						<th id ='d' scope="col">Пт</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<% 1.upto(7) do |lesson| %>
+					<tr>
+						<th scope="row"><%= lesson %></th>
+						<% 1.upto(5) do |day| %>
+							<td>
+							<!-- TODO: Find a better way to do this -->
+							<% @lessons.each do |l| %>
+								<% if l.day == day and l.lesson == lesson %>
+								<div class="d-inline-block border rounded p-2 text-truncate" id='cl'>
+									<span><%= l.teacher.subject %></span><br>
+									<small class="text-muted"><%= l.teacher.name %>, <%= l.classroom %></small>
+								</div>
+								<% end %>
+							<% end %>
+							</td>
+						<% end %>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>

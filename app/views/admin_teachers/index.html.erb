@@ -1,0 +1,30 @@
+<% provide(:title, "Admin | Teachers") %>
+<% provide(:active, "teachers") %>
+
+<% content_for :breadcrumb do %>
+	<%= render 'shared/breadcrumb', path: [path("Домой", "/"), path("Личный кабинет", "/admin"), path("Учителя", "/admin/teachers")] %>
+<% end %>
+
+<div id='n'>
+	<h4 id='cr'>Учителя:</h4>
+	<table class="mr-3">
+		<thead>
+			<th class="w-100">Фамилия Имя Отчество</th>
+			<th class="pr-3">Предмет</th>
+			<th></th>
+			<th></th>
+		</thead>
+		<tbody>
+		<% @teachers.each do |teacher| %>
+			<tr>
+				<td> <%= teacher.name %> </td>
+				<td class="pr-3"> <%= teacher.subject %> </td>
+				<td class="pr-2"> <%= link_to "Редактировать", "/admin/teachers/#{teacher.id}/edit" %> </td>
+				<td> <%= link_to "Удалить", "/admin/teachers/#{teacher.id}/delete", method: "delete" %> </td>
+			</tr>
+		<% end %>
+		</tbody>
+	</table>
+
+	<%= link_to "Создать", admin_teachers_new_path, class: "btn btn-primary btn-sm mt-4" %>
+</div>

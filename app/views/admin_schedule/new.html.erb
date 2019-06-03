@@ -1,0 +1,54 @@
+<% provide(:title, "Admin | Schedule | New") %>
+<% provide(:active, "schedule") %>
+
+<% content_for :breadcrumb do %>
+	<%= render 'shared/breadcrumb', path: [path("Главная", "/"), path("Личный кабинет", "/admin"), path("Расписание", "/admin/schedule"), path("New", "/admin/schedule/new")] %>
+<% end %>
+
+<div id='n'>
+	<h4 id='cr'>Создать:</h4>
+
+	<% if @schedule.errors.any? %>
+	<div class="alert alert-danger mt-4">
+		<ul>
+		<% @schedule.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		<% end %>
+		</ul>
+	</div>
+	<% end %>
+
+	<%= form_for @schedule, url: admin_schedule_create_path do |f| %>
+		<div class="form-group">
+			<%= f.label :Класс %>
+			<br>
+			<%= f.text_field :group, class: "w-75" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :Номер_дня %>
+			<br>
+			<%= f.number_field :day, class: "w-75" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :Номер_урока %>
+			<br>
+			<%= f.number_field :lesson, class: "w-75" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :Кабинет %>
+			<br>
+			<%= f.text_field :classroom, class: "w-75" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :Учитель %>
+			<br>
+			<%= f.select :teacher_id, options_for_select(Teacher.all.map{|t|[t.name, t.id]}) %>
+		</div>
+
+		<%= f.submit "Создать", class: "btn btn-primary" %>
+	<% end %>
+</div>

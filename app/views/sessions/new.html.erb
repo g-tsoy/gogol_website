@@ -1,0 +1,15 @@
+<% provide(:title, "Login") %>
+
+<div class="login">
+	<h3 class="my-4">Авторизация</h3>
+
+	<%= form_for(:session, url: login_path) do |f| %>
+		<%= f.label :email %>
+		<%= f.email_field :email, class: 'form-control mb-3' %>
+
+		<%= f.label :Пароль %>
+		<%= f.password_field :password, class: 'form-control mb-3' %>
+
+		<%= f.submit "Вход", class: "btn btn-primary mt-3" %>
+	<% end %>
+</div>

@@ -1,0 +1,36 @@
+<% provide(:title, "#{@user.name} profile") %>
+
+<nav>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Главная</a></li>
+	<li class="breadcrumb-item active"><a href="#">Автор</a></li>
+  </ol>
+</nav>
+
+<div class="row frontpage bl">
+	<div class='col-md-12'>
+		<h1 id='title'><%= @user.name %></h1>
+	</div>
+
+	<div class='col-md-3'>		
+		<% @user.microposts.each do |post| %>
+
+			<div class="media mb-3 border rounded">
+				<% if post.cover != "" %>
+					<a href="/news/<%= post.id %>">
+						<img class="mr-3" src="<%= post.cover %>" width="100%" height="100%">
+					</a>
+				<% end %>
+			</div>
+	</div>
+
+	<div class='col-md-9'>
+		<div class="media-body">
+			<a href="/news/<%= post.id %>"><h5 class="mt-0"><%= post.name %></h5></a>
+			<p><%= post.created_at.strftime('%F')%></p>
+			<p><%= post.content[0,100] %></p>
+			<a href="/news/<%= post.id %>">Читать полностью</a>	
+		</div>
+	</div>
+	<% end %>
+</div>

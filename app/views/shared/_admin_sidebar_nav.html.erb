@@ -1,0 +1,10 @@
+<% active = "" unless (defined? active) %>
+
+<div class="col border rounded p-0 mr-5" style="height: max-content">
+	<ul class="list-group list-group-flush">
+
+		<% [['Новости', 'posts'], ['Учителя', 'teachers'], ['Расписание', 'schedule']].each do |item| %>
+			<%= link_to item[0], "/admin/" + item[1], class: ("list-group-item" + (active == item[1] ? " active" : ""))%>
+		<% end %>
+	</ul>
+</div>

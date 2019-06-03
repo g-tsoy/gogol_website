@@ -1,0 +1,17 @@
+<% provide(:title, "Admin") %>
+<% provide(:active, "") %>
+
+<% content_for :breadcrumb do %>
+	<%= render 'shared/breadcrumb', path: [path("Домой", "/"), path("Личный кабинет", "/admin")] %>
+<% end %>
+
+<div class="row frontpage bl">
+	<div class="col-md-12">
+		<h2 id='admin_title'>Добро пожаловать в личный кабинет!</h2>
+	</div>
+	<div class="col-md-12">
+		<p>Здесь вы можете добавлять новости, обновлять информацию об учителях, менять расписание.</p>
+		<p>Приятной работы!</p>
+		<%= link_to "Удалить аккаунт", "/admin/users/#{current_user.id}/delete", method: "delete", class: "btn btn-outline-danger del_self"%>
+	</div>
+</div>

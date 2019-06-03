@@ -1,0 +1,9 @@
+<% path = [path("Home", "/")] unless (defined? path) %>
+
+<nav>
+  <ol class="breadcrumb">
+	<% path.each do |item| %>
+		<li class="breadcrumb-item"><a href="<%= item[:path] %>"><%= item[:name] %></a></li>
+	<% end %>
+  </ol>
+</nav>
